@@ -2,16 +2,18 @@
 <a name="readme-top"></a>
 
 <!-- NAME -->
-# NAME
-**Template-Project-Implementation** 
+# Remove-classic-Teams
 
 <!-- ABSTRACT -->
 ## ABSTRACT 
-Short description
+This script uninstalls the Microsoft Teams classic app and removes the Teams directory for a user.
 
 <!-- ABOUT THE PROJECT -->
 ## DESCRIPTION
-Long description
+Use this script to remove and clear the Microsoft Teams classic app from a computer. 
+Run this PowerShell script for each user profile in which Teams was installed on the computer. 
+After you run this script for all user profiles, redeploy Teams.
+
 
 * What is it ?
     - Interactive script : 
