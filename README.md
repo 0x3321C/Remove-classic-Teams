@@ -2,7 +2,7 @@
 <a name="readme-top"></a>
 
 <!-- NAME -->
-# Remove-classic-Teams
+# Remove Classic Teams
 
 <!-- ABSTRACT -->
 ## ABSTRACT 
