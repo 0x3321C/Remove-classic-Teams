@@ -9,6 +9,12 @@ File Name      : Remove-classicTeams.ps1
 Author         : 0x3321c@github
 Version        : 1.0.0
 
+.ROLE
+Standard User
+
+.FUNCTIONALITY
+Script ensures teams uninstallation
+
 .LINK
 https://learn.microsoft.com/en-us/microsoftteams/scripts/powershell-script-deployment-cleanup
 
@@ -16,19 +22,33 @@ https://learn.microsoft.com/en-us/microsoftteams/scripts/powershell-script-deplo
 
 $TeamsPath = [System.IO.Path]::Combine($env:LOCALAPPDATA, 'Microsoft', 'Teams')
 $TeamsUpdateExePath = [System.IO.Path]::Combine($TeamsPath, 'Update*.exe')
-$LogFilePath = "C:\Temp\Log\Remove-classicTeams.log"
+
+
+
+#Get environment variables
+$userTempFolder = "$env:TEMP"
+$computerName = $env:COMPUTERNAME
+
+#Set Debugging 
+$debugFile = "$userTempFolder\$computerName-Teams.log"
+
+#Set Timing
+$datestamp = Get-Date -Format 'yyyy-MM-dd'
+
 
 function Write-Log {
     param (
         [string]$message,
-        [string]$type = "Info"
+        [string]$type = "Info",
+        [string]$LogFilePath = "$userTempFolder\$computerName-Teams.log"
     )
-    $logEntry = "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') [$type] $message"
+    $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+    $logEntry = "$timestamp [$type] - $message"
     Add-Content -Path $LogFilePath -Value $logEntry
 }
 
 try {
-    Write-Log "Starting Teams uninstallation process"
+    Write-Log "### Remove-Classic-Teams-Logging ###"
 
     if (Test-Path $TeamsUpdateExePath) {
         Write-Log "Uninstalling Teams process"
